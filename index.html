@@ -1,298 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BotDeck - AI Chatbots</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {margin:0; font-family: Arial; text-align:center;}
-    .hero {padding:80px 20px; background:#0f172a; color:white;}
-    .section {padding:60px 20px;}
-    .btn {padding:12px 24px; background:#2563eb; color:white; text-decoration:none; border-radius:8px;}
-  </style>
-</head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botdeck – AI Chatbots for Business</title>
 
-<div class="hero">
-  <h1>Turn Website Visitors Into Real Business Leads</h1>
-  <p>AI chatbots that answer questions, capture leads & book appointments 24/7</p>
-  <a class="btn" href="#">See Demo</a>
-</div>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<div class="section">
-  <h2>Your AI Sales Assistant</h2>
-  <p>Instant replies, lead capture & automation for local businesses</p>
-</div>
-<!-- BOTDECK DEMO CHATBOT -->
 <style>
-#botdeck-chat-btn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#111;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+
+body{
+background:#0f172a;
 color:#fff;
-border-radius:50px;
-padding:12px 18px;
-cursor:pointer;
-font-family:sans-serif;
-z-index:9999;
 }
 
-#botdeck-chatbox{
-position:fixed;
-bottom:80px;
-right:20px;
-width:300px;
-background:#fff;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-display:none;
-flex-direction:column;
-overflow:hidden;
-font-family:sans-serif;
-z-index:9999;
-}
-
-#botdeck-header{
-background:#111;
-color:#fff;
-padding:12px;
-font-weight:bold;
-}
-
-#botdeck-messages{
-padding:10px;
-height:220px;
-overflow-y:auto;
-font-size:14px;
-}
-
-.bot-msg{margin:6px 0;color:#333}
-.user-msg{margin:6px 0;text-align:right;color:#007bff}
-
-#botdeck-input{
+/* NAVBAR */
+nav{
 display:flex;
-border-top:1px solid #eee;
+justify-content:space-between;
+padding:22px 8%;
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(12px);
 }
-
-#botdeck-input input{
-flex:1;
+.logo{font-weight:700;font-size:20px}
+nav button{
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
 border:none;
-padding:10px;
-outline:none;
-}
-
-#botdeck-input button{
-background:#111;
+padding:10px 18px;
+border-radius:8px;
 color:#fff;
-border:none;
-padding:10px;
 cursor:pointer;
 }
-</style>
 
-<div id="botdeck-chat-btn">💬 Chat with us</div>
-
-<div id="botdeck-chatbox">
-<div id="botdeck-header">Botdeck Assistant</div>
-<div id="botdeck-messages">
-<div class="bot-msg">Hi 👋 Welcome to Botdeck. How can I help?</div>
-</div>
-<div id="botdeck-input">
-<input id="botdeck-text" placeholder="Type here..." />
-<button onclick="sendMsg()">➤</button>
-</div>
-</div>
-
-<script>
-const btn=document.getElementById("botdeck-chat-btn");
-const box=document.getElementById("botdeck-chatbox");
-const messages=document.getElementById("botdeck-messages");
-
-btn.onclick=()=>box.style.display=box.style.display==="flex"?"none":"flex";
-
-function sendMsg(){
-let input=document.getElementById("botdeck-text");
-let text=input.value.trim();
-if(!text) return;
-
-messages.innerHTML+=`<div class="user-msg">${text}</div>`;
-input.value="";
-
-let reply="Thanks! Our team will connect soon.";
-
-if(text.toLowerCase().includes("price"))
-reply="Our chatbot plans start from ₹2,999. Want a demo?";
-else if(text.toLowerCase().includes("demo"))
-reply="Great! Leave your number and we’ll schedule a demo.";
-else if(text.toLowerCase().includes("business"))
-reply="Botdeck helps businesses capture leads & automate support 24/7.";
-
-setTimeout(()=>{
-messages.innerHTML+=`<div class="bot-msg">${reply}</div>`;
-messages.scrollTop=messages.scrollHeight;
-},600);
+/* HERO */
+.hero{
+text-align:center;
+padding:120px 8% 90px;
+max-width:900px;
+margin:auto;
 }
-</script>
-  <!-- BOTDECK PREMIUM CHATBOT -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+.hero h1{
+font-size:48px;
+margin-bottom:18px;
+line-height:1.2;
+}
+.hero p{
+color:#cbd5e1;
+font-size:18px;
+margin-bottom:28px;
+}
+.hero button{
+background:linear-gradient(135deg,#6366f1,#8b5cf6);
+border:none;
+padding:14px 26px;
+border-radius:10px;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+}
 
-<style>
-body{font-family:Inter,sans-serif}
+/* FEATURES */
+.features{
+display:flex;
+gap:24px;
+padding:60px 8%;
+flex-wrap:wrap;
+justify-content:center;
+}
+.card{
+background:rgba(255,255,255,.04);
+padding:26px;
+border-radius:14px;
+width:260px;
+backdrop-filter:blur(10px);
+}
+.card h3{margin-bottom:10px}
 
-/* Floating button */
-#botdeck-chat-btn{
+/* CHATBOT */
+#chat-btn{
 position:fixed;
 bottom:22px;
 right:22px;
 background:linear-gradient(135deg,#6366f1,#8b5cf6);
-color:#fff;
-border-radius:50px;
 padding:14px 18px;
+border-radius:50px;
 cursor:pointer;
-font-weight:500;
-box-shadow:0 8px 25px rgba(99,102,241,.35);
-z-index:9999;
-transition:.3s;
 }
-#botdeck-chat-btn:hover{transform:translateY(-2px)}
 
-/* Chatbox */
-#botdeck-chatbox{
+#chatbox{
 position:fixed;
 bottom:80px;
 right:22px;
 width:340px;
 height:460px;
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(14px);
-border-radius:16px;
-box-shadow:0 25px 60px rgba(0,0,0,.15);
+background:#fff;
+color:#000;
+border-radius:14px;
 display:none;
 flex-direction:column;
 overflow:hidden;
-z-index:9999;
-animation:fadeIn .35s ease;
+box-shadow:0 25px 60px rgba(0,0,0,.3);
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(10px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-/* Header */
-#botdeck-header{
+#chat-header{
 background:linear-gradient(135deg,#6366f1,#8b5cf6);
 color:#fff;
 padding:14px;
-font-weight:600;
 display:flex;
 justify-content:space-between;
 }
 
-/* Messages */
-#botdeck-messages{
-padding:14px;
+#chat-messages{
 flex:1;
+padding:14px;
 overflow-y:auto;
 font-size:14px;
 }
 
-.bot-msg,.user-msg{
+.bot,.user{
 margin:8px 0;
 padding:10px 14px;
-border-radius:14px;
+border-radius:12px;
 max-width:75%;
 }
+.bot{background:#f1f5f9}
+.user{background:#6366f1;color:#fff;margin-left:auto}
 
-.bot-msg{
-background:#f1f5f9;
-color:#111;
-}
-
-.user-msg{
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
-color:#fff;
-margin-left:auto;
-}
-
-/* Input */
-#botdeck-input{
+#chat-input{
 display:flex;
-padding:10px;
 border-top:1px solid #eee;
-background:#fff;
 }
-
-#botdeck-input input{
+#chat-input input{
 flex:1;
 border:none;
+padding:12px;
 outline:none;
-padding:10px;
-font-size:14px;
 }
-
-#botdeck-input button{
-background:linear-gradient(135deg,#6366f1,#8b5cf6);
+#chat-input button{
 border:none;
+padding:12px 16px;
+background:#6366f1;
 color:#fff;
-padding:10px 14px;
-border-radius:10px;
 cursor:pointer;
 }
 </style>
+</head>
 
-<div id="botdeck-chat-btn">💬 Live Demo</div>
+<body>
 
-<div id="botdeck-chatbox">
-<div id="botdeck-header">
+<nav>
+<div class="logo">Botdeck</div>
+<button onclick="toggleChat()">Live Demo</button>
+</nav>
+
+<section class="hero">
+<h1>AI Chatbots that convert visitors into customers</h1>
+<p>Automate support, capture leads, and boost conversions with Botdeck.</p>
+<button onclick="toggleChat()">Try Chatbot Demo</button>
+</section>
+
+<section class="features">
+<div class="card">
+<h3>Lead Capture</h3>
+<p>Convert visitors into qualified leads automatically.</p>
+</div>
+<div class="card">
+<h3>24/7 Support</h3>
+<p>Answer customer queries instantly without human effort.</p>
+</div>
+<div class="card">
+<h3>Easy Integration</h3>
+<p>Add Botdeck to any website in minutes.</p>
+</div>
+</section>
+
+<div id="chat-btn" onclick="toggleChat()">💬</div>
+
+<div id="chatbox">
+<div id="chat-header">
 <span>Botdeck Assistant</span>
-<span style="cursor:pointer" onclick="toggleBot()">✕</span>
+<span style="cursor:pointer" onclick="toggleChat()">✕</span>
 </div>
 
-<div id="botdeck-messages">
-<div class="bot-msg">Hi 👋 Welcome to Botdeck. How can I help?</div>
+<div id="chat-messages">
+<div class="bot">Hi 👋 Welcome to Botdeck. Ask me anything.</div>
 </div>
 
-<div id="botdeck-input">
-<input id="botdeck-text" placeholder="Ask anything..." />
+<div id="chat-input">
+<input id="msg" placeholder="Type message..." />
 <button onclick="sendMsg()">➤</button>
 </div>
 </div>
 
 <script>
-const btn=document.getElementById("botdeck-chat-btn");
-const box=document.getElementById("botdeck-chatbox");
-const messages=document.getElementById("botdeck-messages");
-
-function toggleBot(){
+function toggleChat(){
+let box=document.getElementById("chatbox");
 box.style.display=box.style.display==="flex"?"none":"flex";
 }
-btn.onclick=toggleBot;
 
 function sendMsg(){
-let input=document.getElementById("botdeck-text");
+let input=document.getElementById("msg");
 let text=input.value.trim();
-if(!text) return;
+if(!text)return;
 
-messages.innerHTML+=`<div class="user-msg">${text}</div>`;
+let messages=document.getElementById("chat-messages");
+messages.innerHTML+=`<div class="user">${text}</div>`;
 input.value="";
 
-let reply="Thanks! Our team will connect soon.";
+let reply="Thanks! Our team will connect with you.";
 
 if(text.toLowerCase().includes("price"))
-reply="Our chatbot plans start from ₹2,999/month. Want a demo?";
+reply="Plans start at ₹2,999/month.";
 else if(text.toLowerCase().includes("demo"))
-reply="Awesome! Drop your number and we’ll schedule a demo.";
+reply="Great! Please share your phone number.";
 else if(text.toLowerCase().includes("business"))
-reply="Botdeck helps businesses capture leads, automate support & boost conversions.";
+reply="Botdeck helps automate support and capture leads.";
 
 setTimeout(()=>{
-messages.innerHTML+=`<div class="bot-msg">${reply}</div>`;
+messages.innerHTML+=`<div class="bot">${reply}</div>`;
 messages.scrollTop=messages.scrollHeight;
 },500);
 }
 </script>
+
 </body>
-
 </html>
-

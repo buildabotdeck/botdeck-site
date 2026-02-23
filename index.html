@@ -22,6 +22,117 @@
   <h2>Your AI Sales Assistant</h2>
   <p>Instant replies, lead capture & automation for local businesses</p>
 </div>
+<!-- BOTDECK DEMO CHATBOT -->
+<style>
+#botdeck-chat-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#111;
+color:#fff;
+border-radius:50px;
+padding:12px 18px;
+cursor:pointer;
+font-family:sans-serif;
+z-index:9999;
+}
 
+#botdeck-chatbox{
+position:fixed;
+bottom:80px;
+right:20px;
+width:300px;
+background:#fff;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+display:none;
+flex-direction:column;
+overflow:hidden;
+font-family:sans-serif;
+z-index:9999;
+}
+
+#botdeck-header{
+background:#111;
+color:#fff;
+padding:12px;
+font-weight:bold;
+}
+
+#botdeck-messages{
+padding:10px;
+height:220px;
+overflow-y:auto;
+font-size:14px;
+}
+
+.bot-msg{margin:6px 0;color:#333}
+.user-msg{margin:6px 0;text-align:right;color:#007bff}
+
+#botdeck-input{
+display:flex;
+border-top:1px solid #eee;
+}
+
+#botdeck-input input{
+flex:1;
+border:none;
+padding:10px;
+outline:none;
+}
+
+#botdeck-input button{
+background:#111;
+color:#fff;
+border:none;
+padding:10px;
+cursor:pointer;
+}
+</style>
+
+<div id="botdeck-chat-btn">💬 Chat with us</div>
+
+<div id="botdeck-chatbox">
+<div id="botdeck-header">Botdeck Assistant</div>
+<div id="botdeck-messages">
+<div class="bot-msg">Hi 👋 Welcome to Botdeck. How can I help?</div>
+</div>
+<div id="botdeck-input">
+<input id="botdeck-text" placeholder="Type here..." />
+<button onclick="sendMsg()">➤</button>
+</div>
+</div>
+
+<script>
+const btn=document.getElementById("botdeck-chat-btn");
+const box=document.getElementById("botdeck-chatbox");
+const messages=document.getElementById("botdeck-messages");
+
+btn.onclick=()=>box.style.display=box.style.display==="flex"?"none":"flex";
+
+function sendMsg(){
+let input=document.getElementById("botdeck-text");
+let text=input.value.trim();
+if(!text) return;
+
+messages.innerHTML+=`<div class="user-msg">${text}</div>`;
+input.value="";
+
+let reply="Thanks! Our team will connect soon.";
+
+if(text.toLowerCase().includes("price"))
+reply="Our chatbot plans start from ₹2,999. Want a demo?";
+else if(text.toLowerCase().includes("demo"))
+reply="Great! Leave your number and we’ll schedule a demo.";
+else if(text.toLowerCase().includes("business"))
+reply="Botdeck helps businesses capture leads & automate support 24/7.";
+
+setTimeout(()=>{
+messages.innerHTML+=`<div class="bot-msg">${reply}</div>`;
+messages.scrollTop=messages.scrollHeight;
+},600);
+}
+</script>
 </body>
+
 </html>
